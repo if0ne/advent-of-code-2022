@@ -1,9 +1,9 @@
 mod calorie_counting;
 mod problem;
+mod rock_paper_scirssors;
 
 use std::path::Path;
 
-use crate::calorie_counting::CalorieCounting;
 use crate::problem::Problem;
 
 pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<T::OutputData>) {
@@ -14,6 +14,4 @@ pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<
     (first_answer, second_answer)
 }
 
-fn main() {
-    println!("{:?}", solver::<CalorieCounting>("calorie_counting.txt"));
-}
+fn main() {}
