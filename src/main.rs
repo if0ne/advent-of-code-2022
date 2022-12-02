@@ -1,6 +1,6 @@
 mod calorie_counting;
 mod problem;
-mod rock_paper_scirssors;
+mod rock_paper_scissors;
 
 use std::path::Path;
 
