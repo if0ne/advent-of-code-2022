@@ -1,6 +1,7 @@
 mod calorie_counting;
 mod problem;
 mod rock_paper_scissors;
+mod rucksack_reorganization;
 
 use std::path::Path;
 
@@ -14,4 +15,5 @@ pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<
     (first_answer, second_answer)
 }
 
-fn main() {}
+fn main() {
+}
