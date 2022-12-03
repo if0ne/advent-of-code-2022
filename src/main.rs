@@ -4,7 +4,6 @@ mod rock_paper_scissors;
 mod rucksack_reorganization;
 
 use std::path::Path;
-
 use crate::problem::Problem;
 
 pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<T::OutputData>) {

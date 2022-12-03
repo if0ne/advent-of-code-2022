@@ -9,7 +9,6 @@ fn score(c: char) -> u64 {
     let uppercase_bonus = if c.is_uppercase() { 26 } else { 0 };
 
     let score = (c.to_lowercase().next().unwrap() as u32 - 'a' as u32 + 1) as u64;
-
     score + uppercase_bonus
 }
 
@@ -18,24 +17,9 @@ impl Problem for RucksackReorganization {
     type OutputData = u64;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
-        let mut inventory = vec![];
-
-        let mut buffer = String::new();
         let file = std::fs::File::open(filename).unwrap();
-        let mut reader = BufReader::new(file);
-
-        while let Ok(line) = reader.read_line(&mut buffer) {
-            if line == 0 {
-                break;
-            }
-
-            //inventory.push((l, r));
-
-            inventory.push(buffer.trim().to_string());
-            buffer.clear();
-        }
-
-        inventory
+        let reader = BufReader::new(file);
+        reader.lines().map(Result::unwrap).collect()
     }
 
     fn first_part(input: Self::InputData) -> Self::OutputData {
