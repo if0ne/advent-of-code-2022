@@ -68,15 +68,12 @@ impl Choice {
 
 pub struct RockPaperScissors;
 
-#[allow(clippy::identity_op)]
 fn score_first_part(l: Choice, r: Choice) -> u64 {
     l.get_bonus_for_beat(r) + r.get_extra_bonus()
 }
 
-#[allow(clippy::identity_op)]
 fn score_second_part(l: Choice, r: Choice) -> u64 {
-    let result = r.get_bonus_for_decision();
-    result
+    r.get_bonus_for_decision()
         + match r {
             Choice::Rock => l.get_weak().get_extra_bonus(),
             Choice::Paper => l.get_extra_bonus(),
