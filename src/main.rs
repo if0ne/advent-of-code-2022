@@ -1,8 +1,10 @@
 mod calorie_counting;
+mod camp_cleanup;
 mod problem;
 mod rock_paper_scissors;
 mod rucksack_reorganization;
 
+use crate::camp_cleanup::CampCleanup;
 use crate::problem::Problem;
 use std::path::Path;
 
@@ -14,4 +16,6 @@ pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<
     (first_answer, second_answer)
 }
 
-fn main() {}
+fn main() {
+    println!("{:?}", solver::<CampCleanup>("camp_cleanup.txt"));
+}
