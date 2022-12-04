@@ -1,5 +1,4 @@
 use crate::problem::Problem;
-use std::cmp::Ordering;
 use std::io::{BufRead, BufReader};
 use std::ops::RangeInclusive;
 use std::path::Path;
@@ -46,38 +45,10 @@ trait OverlapRange<T: Ord + PartialOrd> {
 
 impl<T: Ord + PartialOrd> OverlapRange<T> for RangeInclusive<T> {
     fn is_overlap_fully(&self, other: &Self) -> bool {
-        matches!(
-            (self.start().cmp(other.start()), self.end().cmp(other.end()),),
-            (
-                Ordering::Less | Ordering::Equal,
-                Ordering::Greater | Ordering::Equal
-            )
-        )
+        self.start() <= other.start() && other.end() <= self.end()
     }
 
     fn is_overlap(&self, other: &Self) -> bool {
-        let l = matches!(
-            (
-                self.start().cmp(other.start()),
-                self.end().cmp(other.start()),
-            ),
-            (
-                Ordering::Less | Ordering::Equal,
-                Ordering::Greater | Ordering::Equal
-            )
-        );
-
-        let r = matches!(
-            (
-                other.start().cmp(self.start()),
-                other.end().cmp(self.start()),
-            ),
-            (
-                Ordering::Less | Ordering::Equal,
-                Ordering::Greater | Ordering::Equal
-            )
-        );
-
-        l || r
+        self.contains(other.start()) || other.contains(self.start())
     }
 }
