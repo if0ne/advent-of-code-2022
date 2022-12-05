@@ -3,8 +3,10 @@ mod camp_cleanup;
 mod problem;
 mod rock_paper_scissors;
 mod rucksack_reorganization;
+mod supply_stacks;
 
 use crate::problem::Problem;
+use crate::supply_stacks::SupplyStacks;
 use std::path::Path;
 
 pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<T::OutputData>) {
@@ -15,4 +17,6 @@ pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<
     (first_answer, second_answer)
 }
 
-fn main() {}
+fn main() {
+    println!("{:?}", solver::<SupplyStacks>("supply_stacks.txt"))
+}
