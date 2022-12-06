@@ -4,9 +4,10 @@ mod problem;
 mod rock_paper_scissors;
 mod rucksack_reorganization;
 mod supply_stacks;
+mod tuning_trouble;
 
 use crate::problem::Problem;
-use crate::supply_stacks::SupplyStacks;
+
 use std::path::Path;
 
 pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<T::OutputData>) {
@@ -18,5 +19,4 @@ pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<
 }
 
 fn main() {
-    println!("{:?}", solver::<SupplyStacks>("supply_stacks.txt"))
 }
