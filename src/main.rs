@@ -1,5 +1,6 @@
 mod calorie_counting;
 mod camp_cleanup;
+mod no_space_left_on_device;
 mod problem;
 mod rock_paper_scissors;
 mod rucksack_reorganization;
@@ -18,5 +19,4 @@ pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<
     (first_answer, second_answer)
 }
 
-fn main() {
-}
+fn main() {}
