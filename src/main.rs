@@ -5,10 +5,12 @@ mod problem;
 mod rock_paper_scissors;
 mod rucksack_reorganization;
 mod supply_stacks;
+mod treetop_tree_house;
 mod tuning_trouble;
 
 use crate::problem::Problem;
 
+use crate::treetop_tree_house::TreetopTreeHouse;
 use std::path::Path;
 
 pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<T::OutputData>) {
@@ -19,4 +21,6 @@ pub fn solver<T: Problem>(filename: impl AsRef<Path>) -> (T::OutputData, Option<
     (first_answer, second_answer)
 }
 
-fn main() {}
+fn main() {
+    println!("{:?}", solver::<TreetopTreeHouse>("treetop_tree_house.txt"));
+}

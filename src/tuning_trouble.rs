@@ -19,7 +19,7 @@ impl TuningTrouble {
             }
         }
 
-        0
+        panic!("WRONG INPUT")
     }
 }
 
