@@ -7,7 +7,8 @@ pub struct CampCleanup;
 
 impl Problem for CampCleanup {
     type InputData = Vec<(RangeInclusive<u64>, RangeInclusive<u64>)>;
-    type OutputData = u64;
+    type OutputDataFirstPart = u64;
+    type OutputDataSecondPart = u64;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -26,14 +27,14 @@ impl Problem for CampCleanup {
             .collect()
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         input
             .into_iter()
             .filter(|(l, r)| l.is_overlap_fully(r) || r.is_overlap_fully(l))
             .count() as u64
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         Some(input.into_iter().filter(|(l, r)| l.is_overlap(r)).count() as u64)
     }
 }

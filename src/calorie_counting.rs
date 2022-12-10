@@ -20,7 +20,8 @@ impl CalorieCounting {
 
 impl Problem for CalorieCounting {
     type InputData = Vec<Vec<u64>>;
-    type OutputData = u64;
+    type OutputDataFirstPart = u64;
+    type OutputDataSecondPart = u64;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -39,11 +40,11 @@ impl Problem for CalorieCounting {
             })
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         Self::sum_inventory(input).pop().unwrap()
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         Some(Self::sum_inventory(input).into_iter().take(3).sum())
     }
 }

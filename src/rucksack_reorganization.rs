@@ -14,7 +14,8 @@ fn score(c: char) -> u64 {
 
 impl Problem for RucksackReorganization {
     type InputData = Vec<String>;
-    type OutputData = u64;
+    type OutputDataFirstPart = u64;
+    type OutputDataSecondPart = u64;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -22,7 +23,7 @@ impl Problem for RucksackReorganization {
         reader.lines().map(Result::unwrap).collect()
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         input
             .into_iter()
             .map(|items| {
@@ -44,7 +45,7 @@ impl Problem for RucksackReorganization {
             })
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         Some(
             input
                 .into_iter()

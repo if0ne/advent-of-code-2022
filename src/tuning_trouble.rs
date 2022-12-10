@@ -25,7 +25,8 @@ impl TuningTrouble {
 
 impl Problem for TuningTrouble {
     type InputData = String;
-    type OutputData = usize;
+    type OutputDataFirstPart = usize;
+    type OutputDataSecondPart = usize;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -33,12 +34,12 @@ impl Problem for TuningTrouble {
         reader.lines().map(Result::unwrap).next().unwrap()
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         const MARKER_SIZE: usize = 4;
         TuningTrouble::find_marker(input, MARKER_SIZE)
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         const MARKER_SIZE: usize = 14;
         Some(TuningTrouble::find_marker(input, MARKER_SIZE))
     }

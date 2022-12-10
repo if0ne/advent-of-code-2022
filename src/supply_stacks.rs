@@ -12,7 +12,8 @@ pub struct SupplyCommand(u64, usize, usize);
 
 impl Problem for SupplyStacks {
     type InputData = SupplyData;
-    type OutputData = String;
+    type OutputDataFirstPart = String;
+    type OutputDataSecondPart = String;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -54,7 +55,7 @@ impl Problem for SupplyStacks {
         SupplyData(crates, commands)
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         let mut crates = input.0;
         let commands = input.1;
 
@@ -71,7 +72,7 @@ impl Problem for SupplyStacks {
         })
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         let mut crates = input.0;
         let commands = input.1;
 

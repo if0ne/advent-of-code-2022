@@ -83,7 +83,8 @@ fn score_second_part(l: Choice, r: Choice) -> u64 {
 
 impl Problem for RockPaperScissors {
     type InputData = Vec<(Choice, Choice)>;
-    type OutputData = u64;
+    type OutputDataFirstPart = u64;
+    type OutputDataSecondPart = u64;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -99,13 +100,13 @@ impl Problem for RockPaperScissors {
             .collect()
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         input
             .into_iter()
             .fold(0, |acc, (l, r)| acc + score_first_part(l, r))
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         Some(
             input
                 .into_iter()

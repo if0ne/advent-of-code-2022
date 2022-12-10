@@ -24,7 +24,8 @@ impl RopeBridge {
 
 impl Problem for RopeBridge {
     type InputData = Vec<((i64, i64), u64)>;
-    type OutputData = usize;
+    type OutputDataFirstPart = usize;
+    type OutputDataSecondPart = usize;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -40,7 +41,7 @@ impl Problem for RopeBridge {
             .collect()
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         let mut unique_position = HashSet::new();
         let mut h = (1, 1);
         let mut t = (1, 1);
@@ -64,7 +65,7 @@ impl Problem for RopeBridge {
         unique_position.len()
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         const LAST: usize = 9;
         const FIRST: usize = 0;
 

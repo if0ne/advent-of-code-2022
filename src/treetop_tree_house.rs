@@ -71,7 +71,8 @@ impl TreetopTreeHouse {
 
 impl Problem for TreetopTreeHouse {
     type InputData = Vec<Vec<u8>>;
-    type OutputData = usize;
+    type OutputDataFirstPart = usize;
+    type OutputDataSecondPart = usize;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -92,7 +93,7 @@ impl Problem for TreetopTreeHouse {
             })
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         let mut count = 0;
         //Borders
         count += input.len() * 2;
@@ -109,7 +110,7 @@ impl Problem for TreetopTreeHouse {
         count
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         let mut max = 0;
 
         for i in 0..input.len() {

@@ -8,7 +8,8 @@ pub struct NoSpaceLeftOnDevice;
 
 impl Problem for NoSpaceLeftOnDevice {
     type InputData = Cursor<'static, u64>;
-    type OutputData = u64;
+    type OutputDataFirstPart = u64;
+    type OutputDataSecondPart = u64;
 
     fn read_file(filename: impl AsRef<Path>) -> Self::InputData {
         let file = std::fs::File::open(filename).unwrap();
@@ -56,14 +57,14 @@ impl Problem for NoSpaceLeftOnDevice {
         cursor
     }
 
-    fn first_part(input: Self::InputData) -> Self::OutputData {
+    fn first_part(input: Self::InputData) -> Self::OutputDataFirstPart {
         let dirs = input.get_dirs_with_space_pred(100_000, &|need, el| el < need);
 
         dirs.into_iter()
             .fold(0, |acc, el| acc + input.get_space(el))
     }
 
-    fn second_part(input: Self::InputData) -> Option<Self::OutputData> {
+    fn second_part(input: Self::InputData) -> Option<Self::OutputDataSecondPart> {
         const TOTAL_SPACE: u64 = 70_000_000;
         const NEED_SPACE: u64 = 30_000_000;
 
