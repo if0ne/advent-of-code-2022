@@ -1,6 +1,7 @@
 mod calorie_counting;
 mod camp_cleanup;
 mod cathode_ray_tube;
+mod monkey_in_the_middle;
 mod no_space_left_on_device;
 mod problem;
 mod rock_paper_scissors;
@@ -12,6 +13,7 @@ mod tuning_trouble;
 
 use crate::problem::Problem;
 
+use crate::monkey_in_the_middle::MonkeyInTheMiddle;
 use std::path::Path;
 
 pub fn solver<T: Problem>(
@@ -24,4 +26,9 @@ pub fn solver<T: Problem>(
     (first_answer, second_answer)
 }
 
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        solver::<MonkeyInTheMiddle>("monkey_in_the_middle.txt")
+    )
+}
