@@ -1,6 +1,7 @@
 mod calorie_counting;
 mod camp_cleanup;
 mod cathode_ray_tube;
+mod hill_climbing_algorithm;
 mod monkey_in_the_middle;
 mod no_space_left_on_device;
 mod problem;
@@ -13,7 +14,7 @@ mod tuning_trouble;
 
 use crate::problem::Problem;
 
-use crate::monkey_in_the_middle::MonkeyInTheMiddle;
+use crate::hill_climbing_algorithm::HillClimbingAlgorith;
 use std::path::Path;
 
 pub fn solver<T: Problem>(
@@ -29,6 +30,6 @@ pub fn solver<T: Problem>(
 fn main() {
     println!(
         "{:?}",
-        solver::<MonkeyInTheMiddle>("monkey_in_the_middle.txt")
+        solver::<HillClimbingAlgorith>("hill_climbing_algorithm.txt")
     )
 }
