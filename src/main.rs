@@ -1,6 +1,7 @@
 mod calorie_counting;
 mod camp_cleanup;
 mod cathode_ray_tube;
+mod distress_signal;
 mod hill_climbing_algorithm;
 mod monkey_in_the_middle;
 mod no_space_left_on_device;
@@ -12,10 +13,10 @@ mod supply_stacks;
 mod treetop_tree_house;
 mod tuning_trouble;
 
-use crate::problem::Problem;
-
-use crate::hill_climbing_algorithm::HillClimbingAlgorith;
 use std::path::Path;
+
+use crate::distress_signal::DistressSignal;
+use crate::problem::Problem;
 
 pub fn solver<T: Problem>(
     filename: impl AsRef<Path>,
@@ -28,8 +29,5 @@ pub fn solver<T: Problem>(
 }
 
 fn main() {
-    println!(
-        "{:?}",
-        solver::<HillClimbingAlgorith>("hill_climbing_algorithm.txt")
-    )
+    println!("{:?}", solver::<DistressSignal>("distress_signal.txt"))
 }
