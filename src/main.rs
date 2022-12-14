@@ -6,6 +6,7 @@ mod hill_climbing_algorithm;
 mod monkey_in_the_middle;
 mod no_space_left_on_device;
 mod problem;
+mod regolith_reservoir;
 mod rock_paper_scissors;
 mod rope_bridge;
 mod rucksack_reorganization;
@@ -15,8 +16,8 @@ mod tuning_trouble;
 
 use std::path::Path;
 
-use crate::distress_signal::DistressSignal;
 use crate::problem::Problem;
+use crate::regolith_reservoir::RegolithReservoir;
 
 pub fn solver<T: Problem>(
     filename: impl AsRef<Path>,
@@ -29,5 +30,8 @@ pub fn solver<T: Problem>(
 }
 
 fn main() {
-    println!("{:?}", solver::<DistressSignal>("distress_signal.txt"))
+    println!(
+        "{:?}",
+        solver::<RegolithReservoir>("regolith_reservoir.txt")
+    )
 }
